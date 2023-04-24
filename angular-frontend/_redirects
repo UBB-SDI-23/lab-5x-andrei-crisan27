@@ -1,0 +1,2 @@
+/restapi/* http://ec2-13-51-254-127.eu-north-1.compute.amazonaws.com/restapi/:splat 200!
+/*  index.html 200!
