@@ -8,7 +8,7 @@ import { AgeAvg } from '../body/models/age-statistic.models';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'http://ec2-13-50-237-209.eu-north-1.compute.amazonaws.com/restapi/'
+  baseUrl = '/restapi/'
   constructor(private http: HttpClient) { }
 
   getIndividuals(): Observable<Individual[]>{
