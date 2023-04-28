@@ -8,11 +8,11 @@ import { AgeAvg } from '../body/models/age-statistic.models';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = '/restapi/'
+  baseUrl = 'https://sdi-app-l5.strangled.net/'
   constructor(private http: HttpClient) { }
 
   getIndividuals(): Observable<Individual[]>{
-    return this.http.get(`${this.baseUrl}individuals/`) as Observable<Individual[]>
+    return this.http.get(`${this.baseUrl}restapi/individuals/`) as Observable<Individual[]>
   }
 
   getIndividual(individualId: number): Observable<Individual>{
