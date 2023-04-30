@@ -10,10 +10,15 @@ django.setup()
 
 from restapi.models import Countries
 import pycountry
-from geonamescache import GeonamesCache
+from geopy.geocoders import Nominatim
 
-gc = GeonamesCache()
-cities = [city['name'] for city in gc.get_cities()]
+geolocator = Nominatim(user_agent="my-app")
+
+# Get the top 1000 cities by population
+location_list = geolocator.geocode("country", exactly_one=False, limit=1000)
+
+# Extract the city names from the locations
+cities = [location.address.split(", ")[0] for location in location_list]
 
 countries = list(pycountry.countries)
 
