@@ -30,5 +30,5 @@ if __name__ == '__main__':
     fake = Faker()
     n = 100
     for _ in range(n):
-        Countries.objects.create(name=random.choice(countries)+str(random.randint(0, 10000)), continent=fake.name()[0]+str(random.randint(0, 10000)), population=random.randint(0, 1000), capital=random.choice(cities), surface=random.randint(0, 1000))
+        Countries.objects.create(name=random.choice(countries), continent=fake.name()[:3]+str(random.randint(0, 10000)), population=random.randint(0, 1000), capital=random.choice(cities), surface=random.randint(0, 1000))
 
