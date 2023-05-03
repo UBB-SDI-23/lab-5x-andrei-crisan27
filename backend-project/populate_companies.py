@@ -13,18 +13,14 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lab1.settings')
 
 django.setup()
 
-from django.core.exceptions import ObjectDoesNotExist
 from faker import Faker
-
-from restapi.models import Company, Countries
-from restapi.validators import validate_year_founded
 
 
 if __name__ == '__main__':
     fake = Faker()
     n = 100000
     file = open('companies_insert.txt', 'w')
-    file.write('INSERT INTO restapi_company (name, year_founded, number_of_employees, country_id, activity) VALUES\n')
+    file.write('INSERT INTO restapi_companies (name, year_founded, number_of_employees, country_id, activity) VALUES\n')
 
     for i in range(n):
         company_name = f"{fake.company()} {random.randint(1, 100)}"[:25]
