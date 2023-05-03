@@ -56,13 +56,23 @@ if __name__ == '__main__':
     from faker import Faker
 
     file = open('countries_insert.txt', 'w')
-    file.write('INSERT INTO restapi_countries VALUES')
+    file.write('INSERT INTO restapi_countries (name, continent, population, capital, surface) VALUES\n')
 
     fake = Faker()
     n = 100
-    for _ in range(n):
-        # Countries.objects.create(name=str(random.choice(countries)) + str(random.randint(0, 1000)),
-        #                          continent=str(random.choice(continents)) + str(random.randint(0, 10000)),
-        #                          population=random.randint(0, 1000), capital=fake.name()[:3],
-        #                          surface=random.randint(0, 1000))
-        file.write(f"('{str(random.choice(countries)) + str(random.randint(0, 1000))}','{str(random.choice(continents)) + str(random.randint(0, 10000))}', {random.randint(0, 1000)}, '{fake.name()[:3] + str(random.randint(0, 1000))}', {random.randint(0, 1000)}),")
+    for i in range(n):
+        country_name = f"{fake.country()} {random.randint(1, 100)}"
+        continent = fake.word(
+            ext_word_list=['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania', 'South America'])
+        population = fake.random_int(min=0, max=10000)
+        capital = fake.city()[:25]
+        surface = fake.random_int(min=0, max=10000)
+
+        values_str = f"('{country_name}', '{continent}', {population}, '{capital}', {surface})"
+        if i == n - 1:
+            values_str += ';'
+        else:
+            values_str += ',\n'
+        file.write(values_str)
+
+    file.close()
