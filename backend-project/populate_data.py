@@ -61,13 +61,11 @@ if __name__ == '__main__':
     fake = Faker()
     n = 100
     for i in range(n):
-        country_name = f"{fake.country()} {random.randint(1, 100)}"
-        country_name = country_name.replace("'", "")
+        country_name = f"{fake.country()} {random.randint(1, 100)}"[:25]
         continent = fake.word(
-            ext_word_list=['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania', 'South America'])
+            ext_word_list=['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania', 'South America'])[:25]
         population = fake.random_int(min=0, max=10000)
         capital = fake.city()[:25]
-        capital = capital.replace("'", "")
         surface = fake.random_int(min=0, max=10000)
 
         values_str = f"('{country_name}', '{continent}', {population}, '{capital}', {surface})"
@@ -78,4 +76,3 @@ if __name__ == '__main__':
         file.write(values_str)
 
     file.close()
-
