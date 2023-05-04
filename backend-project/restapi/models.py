@@ -57,6 +57,7 @@ class Companies(models.Model):
     number_of_employees = models.IntegerField()
     country = models.ForeignKey(Countries, on_delete=models.CASCADE)
     activity = models.CharField(max_length=50)
+    text_field = models.TextField(max_length=800)
 
     def __str__(self):
         return self.name
