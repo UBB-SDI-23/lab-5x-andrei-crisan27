@@ -23,7 +23,7 @@ if __name__ == '__main__':
         number_of_employees = fake.random_int(min=1, max=10000)
         country_id = random.randint(1, 200000)
         activity = fake.word(ext_word_list=['Consulting', 'Technology', 'Manufacturing', 'Retail', 'Finance', 'Transportation'])[:50]
-        text_field = ' '.join([fake.word(ext_word_list=None, nb_chars=8) for _ in range(100)])
+        text_field = fake.lorem.words(nb=100, ext_word_list=None, unique=False)
 
         values_str = f"('{company_name}', {year_founded}, {number_of_employees}, {country_id}, '{activity}', '{text_field}')"
         if i == n - 1:
